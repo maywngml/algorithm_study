@@ -1,12 +1,20 @@
-// 폰켓몬의 종류 갯수를 구하고
-// 폰켓문 갯수/2, 폰켓몬 종류 갯수 중 큰 수가 정답
-// 갯수만 알면 어차피 폰켓몬을 선택하는 방법? 까지는
-// 고려하지 않아도 됨, 답은 갯수만 구하는거니까
+// 문제 링크: https://school.programmers.co.kr/learn/courses/30/lessons/1845#
+// 풀이 방법
+// 1. 최대한 많은 종류의 포켓몬을 골라야 하기 때문에 포켓몬 번호 중복 제거
+// 2. 포켓몬 개수 / 2, 중복 제거 포켓몬 수 중 작은 수가 정답
 
+// 2022년 코드
 function solution(nums) {
-    const halfNumsLength = nums.length / 2;
-    const ponketmonCnt = new Set(nums).size;
-    const  answer = Math.min(halfNumsLength, ponketmonCnt);
-    
-    return answer;
+  const halfNumsLength = nums.length / 2;
+  const ponketmonCnt = new Set(nums).size;
+  const answer = Math.min(halfNumsLength, ponketmonCnt);
+
+  return answer;
+}
+
+// 2024년 코드
+function solution(nums) {
+  const noDuplicationNumsLength = new Set(nums).size;
+  const halfNumsLength = nums.length / 2;
+  return Math.min(noDuplicationNumsLength, halfNumsLength);
 }
