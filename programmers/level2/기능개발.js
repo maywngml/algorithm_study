@@ -28,3 +28,32 @@ function solution(progresses, speeds) {
 
   return answer;
 }
+
+// 두번째 풀이
+function solution(progresses, speeds) {
+  const queue = [];
+  const answer = [];
+  let maxDay = -1;
+
+  progresses.forEach((progress, index) => {
+    const remainingProgress = 100 - progress;
+    const speed = speeds[index];
+    const day =
+      Math.floor(remainingProgress / speed) +
+      (remainingProgress % speed > 0 ? 1 : 0);
+    queue.push(day);
+  });
+
+  while (queue.length > 0) {
+    const currentDay = queue.shift();
+
+    if (maxDay < currentDay) {
+      maxDay = Math.max(maxDay, currentDay);
+      answer.push(1);
+    } else {
+      answer[answer.length - 1]++;
+    }
+  }
+
+  return answer;
+}
