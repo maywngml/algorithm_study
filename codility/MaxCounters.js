@@ -29,3 +29,35 @@ function solution(N, A) {
 
   return counters;
 }
+
+function solution(S) {
+  const result = new Set();
+  const splitedS = S.splite('');
+  const changeNum = [
+    [0, 3, 6, 9],
+    [2, 5, 8],
+    [1, 4, 7],
+  ];
+  let total = 0,
+    currentTotal = 0;
+
+  splitedS.forEach((item) => {
+    total += +item;
+  });
+
+  currentToal = total;
+
+  splitedS.forEach((item, index) => {
+    const numberItem = +item;
+    currentTotal -= numberItem;
+    const changeNumIndex = currentTotal % 3;
+
+    changeNum[changeNumIndex].forEach((item) => {
+      result.add(`${S.slice(0, index)}${item}${S.slice(index + 1)}`);
+    });
+
+    currentTotal += numberItem;
+  });
+
+  return result.size;
+}
